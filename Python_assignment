@@ -1,0 +1,1284 @@
+{
+ "cells": [
+  {
+   "cell_type": "code",
+   "execution_count": 2,
+   "id": "7d1d67f8-cd08-4d34-801d-99b6a362337b",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Second largest number is: 15\n"
+     ]
+    }
+   ],
+   "source": [
+    "def find_second_largest(numbers):\n",
+    "    if len(numbers) < 2:\n",
+    "        return \"List must contain at least two distinct numbers.\"\n",
+    "\n",
+    "    first = second = float('-inf')\n",
+    "    for num in numbers:\n",
+    "        if num > first:\n",
+    "            second = first\n",
+    "            first = num\n",
+    "        elif first > num > second:\n",
+    "            second = num\n",
+    "\n",
+    "    return second if second != float('-inf') else \"No second largest number found.\"\n",
+    "\n",
+    "# Example list\n",
+    "nums = [10, 5, 20, 8, 20, 15]\n",
+    "\n",
+    "# Call the function and print result\n",
+    "print(\"Second largest number is:\", find_second_largest(nums))\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 3,
+   "id": "cca636b4-adee-4807-bd2f-54456738c103",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Sorted list without duplicates: [1, 2, 3, 4, 5]\n"
+     ]
+    }
+   ],
+   "source": [
+    "def remove_duplicates_sorted(lst):\n",
+    "    unique = []\n",
+    "    for item in lst:\n",
+    "        if item not in unique:\n",
+    "            unique.append(item)\n",
+    "    return sorted(unique)\n",
+    "\n",
+    "# Example list\n",
+    "numbers = [4, 2, 5, 2, 1, 4, 3, 5]\n",
+    "\n",
+    "# Call the function and print the result\n",
+    "print(\"Sorted list without duplicates:\", remove_duplicates_sorted(numbers))\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 4,
+   "id": "610c510f-c367-48d3-a211-b885c55b9ea5",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Sum: 100\n",
+      "Average: 25.0\n"
+     ]
+    }
+   ],
+   "source": [
+    "def sum_and_average(numbers):\n",
+    "    total = sum(numbers)\n",
+    "    average = total / len(numbers) if numbers else 0\n",
+    "    return total, average\n",
+    "\n",
+    "# Example list\n",
+    "nums = [10, 20, 30, 40]\n",
+    "\n",
+    "# Calculate and display\n",
+    "total, avg = sum_and_average(nums)\n",
+    "print(\"Sum:\", total)\n",
+    "print(\"Average:\", avg)\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 5,
+   "id": "2c3a0c07-6942-42ba-848e-d12aaba279e3",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "29 is a prime number.\n"
+     ]
+    }
+   ],
+   "source": [
+    "def is_prime(n):\n",
+    "    if n < 2:\n",
+    "        return False\n",
+    "    for i in range(2, int(n**0.5) + 1):\n",
+    "        if n % i == 0:\n",
+    "            return False\n",
+    "    return True\n",
+    "\n",
+    "# Example input\n",
+    "number = 29\n",
+    "\n",
+    "# Check and display\n",
+    "if is_prime(number):\n",
+    "    print(f\"{number} is a prime number.\")\n",
+    "else:\n",
+    "    print(f\"{number} is not a prime number.\")\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 6,
+   "id": "95256b3b-155e-4e41-937d-9b1ddf30d733",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Vowels: 3\n",
+      "Consonants: 7\n",
+      "Digits: 3\n",
+      "Special Characters: 6\n"
+     ]
+    }
+   ],
+   "source": [
+    "def count_chars(s):\n",
+    "    vowels = 'aeiouAEIOU'\n",
+    "    v = c = d = sp = 0\n",
+    "    for ch in s:\n",
+    "        if ch.isalpha():\n",
+    "            if ch in vowels:\n",
+    "                v += 1\n",
+    "            else:\n",
+    "                c += 1\n",
+    "        elif ch.isdigit():\n",
+    "            d += 1\n",
+    "        else:\n",
+    "            sp += 1\n",
+    "    return v, c, d, sp\n",
+    "\n",
+    "# Example string\n",
+    "text = \"Hello World! 123 :)\"\n",
+    "vowels, consonants, digits, specials = count_chars(text)\n",
+    "print(\"Vowels:\", vowels)\n",
+    "print(\"Consonants:\", consonants)\n",
+    "print(\"Digits:\", digits)\n",
+    "print(\"Special Characters:\", specials)\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 7,
+   "id": "933d1eef-ff35-4caf-a163-5e888ef6c31d",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Even numbers from 1 to 100:\n",
+      "2 4 6 8 10 12 14 16 18 20 22 24 26 28 30 32 34 36 38 40 42 44 46 48 50 52 54 56 58 60 62 64 66 68 70 72 74 76 78 80 82 84 86 88 90 92 94 96 98 100 "
+     ]
+    }
+   ],
+   "source": [
+    "print(\"Even numbers from 1 to 100:\")\n",
+    "for i in range(2, 101, 2):\n",
+    "    print(i, end=' ')\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 8,
+   "id": "7a01fdc5-c274-4221-a052-dddca218a8cd",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdin",
+     "output_type": "stream",
+     "text": [
+      "Enter a number:  5\n"
+     ]
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Multiplication table for 5:\n",
+      "5 x 1 = 5\n",
+      "5 x 2 = 10\n",
+      "5 x 3 = 15\n",
+      "5 x 4 = 20\n",
+      "5 x 5 = 25\n",
+      "5 x 6 = 30\n",
+      "5 x 7 = 35\n",
+      "5 x 8 = 40\n",
+      "5 x 9 = 45\n",
+      "5 x 10 = 50\n"
+     ]
+    }
+   ],
+   "source": [
+    "num = int(input(\"Enter a number: \"))\n",
+    "print(f\"Multiplication table for {num}:\")\n",
+    "for i in range(1, 11):\n",
+    "    print(f\"{num} x {i} = {num * i}\")\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 9,
+   "id": "bb45bce0-c71f-4d91-a3dc-2a13e1a6bfcb",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Numbers divisible by both 3 and 5 from 1 to 100:\n",
+      "[15, 30, 45, 60, 75, 90]\n"
+     ]
+    }
+   ],
+   "source": [
+    "divisible_by_3_and_5 = [i for i in range(1, 101) if i % 3 == 0 and i % 5 == 0]\n",
+    "print(\"Numbers divisible by both 3 and 5 from 1 to 100:\")\n",
+    "print(divisible_by_3_and_5)\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 11,
+   "id": "a333092e-0d2e-4df2-b59e-0ae413f7ee06",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdin",
+     "output_type": "stream",
+     "text": [
+      "Enter a number:  1234\n"
+     ]
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Reversed number is: 4321\n"
+     ]
+    }
+   ],
+   "source": [
+    "num = int(input(\"Enter a number: \"))\n",
+    "reversed_num = int(str(num)[::-1])\n",
+    "print(\"Reversed number is:\", reversed_num)\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 12,
+   "id": "c0c36add-1e7a-4756-8382-1bc1da06ddf1",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Character Frequency: {'h': 1, 'e': 1, 'l': 3, 'o': 2, ' ': 1, 'w': 1, 'r': 1, 'd': 1}\n"
+     ]
+    }
+   ],
+   "source": [
+    "def char_frequency(s):\n",
+    "    freq = {}\n",
+    "    for ch in s:\n",
+    "        freq[ch] = freq.get(ch, 0) + 1\n",
+    "    return freq\n",
+    "\n",
+    "# Example usage\n",
+    "input_str = \"hello world\"\n",
+    "print(\"Character Frequency:\", char_frequency(input_str))\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 13,
+   "id": "8a6bdaa6-18c1-4e9e-82c3-e5738d9f8feb",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "First 10 prime numbers: [2, 3, 5, 7, 11, 13, 17, 19, 23, 29]\n"
+     ]
+    }
+   ],
+   "source": [
+    "def is_prime(n):\n",
+    "    if n < 2:\n",
+    "        return False\n",
+    "    for i in range(2, int(n**0.5)+1):\n",
+    "        if n % i == 0:\n",
+    "            return False\n",
+    "    return True\n",
+    "\n",
+    "def first_n_primes(n):\n",
+    "    primes = []\n",
+    "    num = 2\n",
+    "    while len(primes) < n:\n",
+    "        if is_prime(num):\n",
+    "            primes.append(num)\n",
+    "        num += 1\n",
+    "    return primes\n",
+    "\n",
+    "# Example usage\n",
+    "n = 10\n",
+    "print(f\"First {n} prime numbers:\", first_n_primes(n))\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 14,
+   "id": "3d363ad3-7eeb-41d3-91e1-b71952899b39",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Is 121 a palindrome? True\n"
+     ]
+    }
+   ],
+   "source": [
+    "def is_palindrome(num):\n",
+    "    return str(num) == str(num)[::-1]\n",
+    "\n",
+    "# Example usage\n",
+    "number = 121\n",
+    "print(f\"Is {number} a palindrome?\", is_palindrome(number))\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 15,
+   "id": "24311f16-5440-429e-8fd8-bef4c1dbd8c3",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Element 2 appears 3 times\n"
+     ]
+    }
+   ],
+   "source": [
+    "def count_element(lst, element):\n",
+    "    return lst.count(element)\n",
+    "\n",
+    "# Example usage\n",
+    "my_list = [1, 2, 3, 2, 4, 2, 5]\n",
+    "element = 2\n",
+    "print(f\"Element {element} appears {count_element(my_list, element)} times\")\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 16,
+   "id": "5b7bf939-1585-40ee-9541-12886443a8a7",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Squares of even numbers from 1 to 50: [4, 16, 36, 64, 100, 144, 196, 256, 324, 400, 484, 576, 676, 784, 900, 1024, 1156, 1296, 1444, 1600, 1764, 1936, 2116, 2304, 2500]\n"
+     ]
+    }
+   ],
+   "source": [
+    "squares = [i**2 for i in range(2, 51, 2)]\n",
+    "print(\"Squares of even numbers from 1 to 50:\", squares)\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 17,
+   "id": "231628e4-1872-474b-afaf-a9614f7e258b",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Unique elements (order preserved): [1, 2, 3, 4, 5]\n"
+     ]
+    }
+   ],
+   "source": [
+    "def unique_elements(lst):\n",
+    "    seen = []\n",
+    "    for item in lst:\n",
+    "        if item not in seen:\n",
+    "            seen.append(item)\n",
+    "    return seen\n",
+    "\n",
+    "# Example usage\n",
+    "my_list = [1, 2, 2, 3, 1, 4, 5, 3]\n",
+    "print(\"Unique elements (order preserved):\", unique_elements(my_list))\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 18,
+   "id": "2c318d38-164e-493e-92fc-38281412d8fc",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Odd\n"
+     ]
+    }
+   ],
+   "source": [
+    "def check_even_odd(n):\n",
+    "    return \"Even\" if n % 2 == 0 else \"Odd\"\n",
+    "\n",
+    "print(check_even_odd(7))  # Output: Odd\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 19,
+   "id": "66de30f9-03d2-4d9e-bf69-3dc1d6318ba3",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "[1, 3, 6, 10]\n"
+     ]
+    }
+   ],
+   "source": [
+    "def cumulative_sum(lst):\n",
+    "    result = []\n",
+    "    total = 0\n",
+    "    for num in lst:\n",
+    "        total += num\n",
+    "        result.append(total)\n",
+    "    return result\n",
+    "\n",
+    "print(cumulative_sum([1, 2, 3, 4]))  # Output: [1, 3, 6, 10]\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 20,
+   "id": "2e68938d-ecd8-479b-be72-551294169617",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "120\n"
+     ]
+    }
+   ],
+   "source": [
+    "def factorial(n):\n",
+    "    if n == 0 or n == 1:\n",
+    "        return 1\n",
+    "    return n * factorial(n - 1)\n",
+    "\n",
+    "print(factorial(5))  # Output: 120\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 21,
+   "id": "66fddbbb-3324-4c66-a11d-4378858146fe",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "[0, 1, 1, 2, 3, 5, 8]\n"
+     ]
+    }
+   ],
+   "source": [
+    "def fibonacci(n):\n",
+    "    a, b = 0, 1\n",
+    "    series = []\n",
+    "    for _ in range(n):\n",
+    "        series.append(a)\n",
+    "        a, b = b, a + b\n",
+    "    return series\n",
+    "\n",
+    "print(fibonacci(7))  # Output: [0, 1, 1, 2, 3, 5, 8]\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 22,
+   "id": "12a6ceca-9ae1-4b66-b506-ffd4c0df03a9",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "True\n"
+     ]
+    }
+   ],
+   "source": [
+    "def is_palindrome(s):\n",
+    "    return s == s[::-1]\n",
+    "\n",
+    "print(is_palindrome(\"madam\"))  # Output: True\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 23,
+   "id": "18a854c3-bab9-4f10-b889-ee7ef63b555f",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "(9, 1)\n"
+     ]
+    }
+   ],
+   "source": [
+    "def find_max_min(lst):\n",
+    "    return max(lst), min(lst)\n",
+    "\n",
+    "print(find_max_min([5, 2, 9, 1]))  # Output: (9, 1)\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 24,
+   "id": "2a4c5187-2af3-408b-866c-f646510b136f",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "True\n"
+     ]
+    }
+   ],
+   "source": [
+    "import string\n",
+    "\n",
+    "def is_pangram(s):\n",
+    "    return set(string.ascii_lowercase).issubset(set(s.lower()))\n",
+    "\n",
+    "print(is_pangram(\"The quick brown fox jumps over the lazy dog\"))  # Output: True\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 25,
+   "id": "8b10121e-a82d-47a1-95ca-e8d1a85be397",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "[11, 13, 17, 19, 23, 29]\n"
+     ]
+    }
+   ],
+   "source": [
+    "def is_prime(n):\n",
+    "    if n < 2:\n",
+    "        return False\n",
+    "    for i in range(2, int(n**0.5)+1):\n",
+    "        if n % i == 0:\n",
+    "            return False\n",
+    "    return True\n",
+    "\n",
+    "def primes_in_range(start, end):\n",
+    "    return [x for x in range(start, end+1) if is_prime(x)]\n",
+    "\n",
+    "print(primes_in_range(10, 30))  # Output: [11, 13, 17, 19, 23, 29]\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 26,
+   "id": "55a201ea-7523-41be-a749-90114ad62f0f",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "(2, 8)\n"
+     ]
+    }
+   ],
+   "source": [
+    "def count_case(s):\n",
+    "    upper = sum(1 for ch in s if ch.isupper())\n",
+    "    lower = sum(1 for ch in s if ch.islower())\n",
+    "    return upper, lower\n",
+    "\n",
+    "print(count_case(\"Hello World!\"))  # Output: (2, 8)\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 27,
+   "id": "41b03f64-3e76-4678-94a6-7c668a48a8c8",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "10\n"
+     ]
+    }
+   ],
+   "source": [
+    "def sum_of_digits(n):\n",
+    "    return sum(int(d) for d in str(abs(n)))\n",
+    "\n",
+    "print(sum_of_digits(1234))  # Output: 10\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 28,
+   "id": "3b28261d-4e66-40df-8868-77016a592c11",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "5\n"
+     ]
+    }
+   ],
+   "source": [
+    "def count_words(sentence):\n",
+    "    return len(sentence.split())\n",
+    "\n",
+    "print(count_words(\"Hello there, how are you?\"))  # Output: 5\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 29,
+   "id": "451f037a-7c43-483d-be4b-8eccfef31fe1",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Hello Whats up\n"
+     ]
+    }
+   ],
+   "source": [
+    "import string\n",
+    "\n",
+    "def remove_punctuation(s):\n",
+    "    return ''.join(ch for ch in s if ch not in string.punctuation)\n",
+    "\n",
+    "print(remove_punctuation(\"Hello!!! What's up?\"))  # Output: Hello Whats up\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 30,
+   "id": "e5d31ee6-5696-4db6-bd65-0f00b65be53b",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "6\n"
+     ]
+    }
+   ],
+   "source": [
+    "def gcd(a, b):\n",
+    "    while b:\n",
+    "        a, b = b, a % b\n",
+    "    return a\n",
+    "\n",
+    "print(gcd(48, 18))  # Output: 6\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 31,
+   "id": "f2f9fdbe-8a7a-4b76-9b24-7f58ee73bada",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "[2, 4]\n"
+     ]
+    }
+   ],
+   "source": [
+    "def find_duplicates(lst):\n",
+    "    return list({x for x in lst if lst.count(x) > 1})\n",
+    "\n",
+    "print(find_duplicates([1, 2, 2, 3, 4, 4, 5]))  # Output: [2, 4]\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 32,
+   "id": "9a493930-5f92-4cb9-a8ea-4b216fbf8565",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "25\n"
+     ]
+    }
+   ],
+   "source": [
+    "def largest_of_three(a, b, c):\n",
+    "    return max(a, b, c)\n",
+    "\n",
+    "print(largest_of_three(10, 25, 15))  # Output: 25\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 33,
+   "id": "c093a2bb-616e-4979-b4d7-1f5640291ab8",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Sorted words: ['brown', 'dog', 'fox', 'jumps', 'lazy', 'over', 'quick', 'the', 'the']\n"
+     ]
+    }
+   ],
+   "source": [
+    "sentence = \"the quick brown fox jumps over the lazy dog\"\n",
+    "words = sentence.split()\n",
+    "sorted_words = sorted(words)\n",
+    "print(\"Sorted words:\", sorted_words)\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 34,
+   "id": "9296024e-eac7-4a96-9606-a2433ead5020",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Merged dictionary: {'a': 1, 'b': 2, 'c': 3, 'd': 4}\n"
+     ]
+    }
+   ],
+   "source": [
+    "dict1 = {'a': 1, 'b': 2}\n",
+    "dict2 = {'c': 3, 'd': 4}\n",
+    "merged = {**dict1, **dict2}\n",
+    "print(\"Merged dictionary:\", merged)\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 35,
+   "id": "8dbb82e0-ecd7-4b5a-91fa-2e30d48e4533",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Vowel counts per word: {'Python': 1, 'is': 1, 'awesome': 4, 'and': 1, 'fun': 1}\n"
+     ]
+    }
+   ],
+   "source": [
+    "def vowel_count_in_words(sentence):\n",
+    "    vowels = \"aeiouAEIOU\"\n",
+    "    result = {}\n",
+    "    for word in sentence.split():\n",
+    "        count = sum(1 for ch in word if ch in vowels)\n",
+    "        result[word] = count\n",
+    "    return result\n",
+    "\n",
+    "sentence = \"Python is awesome and fun\"\n",
+    "print(\"Vowel counts per word:\", vowel_count_in_words(sentence))\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 36,
+   "id": "9635b12d-e656-44a1-92c4-68962c5376cc",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Converted list: [1, 2, 3, 4]\n"
+     ]
+    }
+   ],
+   "source": [
+    "tup = (1, 2, 3, 4)\n",
+    "converted_list = list(tup)\n",
+    "print(\"Converted list:\", converted_list)\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 37,
+   "id": "3aa3b767-3067-4160-b5b1-cde5cc2f6d8b",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Without whitespace: HelloWorld!\n"
+     ]
+    }
+   ],
+   "source": [
+    "def remove_whitespace(text):\n",
+    "    return ''.join(text.split())\n",
+    "\n",
+    "string_with_spaces = \"  Hello   World  !  \"\n",
+    "print(\"Without whitespace:\", remove_whitespace(string_with_spaces))\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 38,
+   "id": "3041ca3d-1f71-4357-a4c9-9a66413b39ae",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Merged dictionary: {'name': 'Alice', 'age': 25, 'city': 'New York'}\n"
+     ]
+    }
+   ],
+   "source": [
+    "keys = ['name', 'age', 'city']\n",
+    "values = ['Alice', 25, 'New York']\n",
+    "merged_dict = dict(zip(keys, values))\n",
+    "print(\"Merged dictionary:\", merged_dict)\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 39,
+   "id": "324809fc-716b-4ae1-a708-8944879d253a",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Key with max value: b\n"
+     ]
+    }
+   ],
+   "source": [
+    "sample_dict = {'a': 10, 'b': 25, 'c': 7}\n",
+    "max_key = max(sample_dict, key=sample_dict.get)\n",
+    "print(\"Key with max value:\", max_key)\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 40,
+   "id": "0c3e9d7b-a411-413f-b707-07224acbf281",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Word frequencies: {'apple': 3, 'banana': 2, 'orange': 1}\n"
+     ]
+    }
+   ],
+   "source": [
+    "def word_frequencies(s):\n",
+    "    words = s.split()\n",
+    "    freq = {}\n",
+    "    for word in words:\n",
+    "        freq[word] = freq.get(word, 0) + 1\n",
+    "    return freq\n",
+    "\n",
+    "sentence = \"apple banana apple orange banana apple\"\n",
+    "print(\"Word frequencies:\", word_frequencies(sentence))\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 41,
+   "id": "7ef1a88c-af7b-41bf-9fc6-3864c34ea506",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Key 'y' exists: True\n"
+     ]
+    }
+   ],
+   "source": [
+    "d = {'x': 10, 'y': 20}\n",
+    "key = 'y'\n",
+    "print(f\"Key '{key}' exists:\", key in d)\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 42,
+   "id": "6bcb28be-d156-4fad-907e-6391e878071d",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "After replacing vowels: H*ll* W*rld\n"
+     ]
+    }
+   ],
+   "source": [
+    "def replace_vowels(s):\n",
+    "    vowels = \"aeiouAEIOU\"\n",
+    "    return ''.join('*' if ch in vowels else ch for ch in s)\n",
+    "\n",
+    "sample = \"Hello World\"\n",
+    "print(\"After replacing vowels:\", replace_vowels(sample))\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 45,
+   "id": "4977caf0-4086-404e-8d89-d6da3e107893",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "This is a sample file.\n",
+      "It has multiple lines.\n",
+      "Enjoy reading!\n"
+     ]
+    }
+   ],
+   "source": [
+    "# Create a sample file first (only once)\n",
+    "with open(\"sample.txt\", \"w\") as f:\n",
+    "    f.write(\"This is a sample file.\\nIt has multiple lines.\\nEnjoy reading!\")\n",
+    "\n",
+    "# Now read it\n",
+    "with open(\"sample.txt\", \"r\") as f:\n",
+    "    content = f.read()\n",
+    "    print(content)\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 46,
+   "id": "576e86bb-84a0-4c70-84df-0a24e38eef17",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Total number of words: 11\n"
+     ]
+    }
+   ],
+   "source": [
+    "with open(\"sample.txt\", \"r\") as f:\n",
+    "    text = f.read()\n",
+    "    words = text.split()\n",
+    "    print(\"Total number of words:\", len(words))\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 47,
+   "id": "684b781b-4e58-447c-9348-27e69081a7d8",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "File copied to 'copy_sample.txt'.\n"
+     ]
+    }
+   ],
+   "source": [
+    "with open(\"sample.txt\", \"r\") as source, open(\"copy_sample.txt\", \"w\") as dest:\n",
+    "    dest.write(source.read())\n",
+    "\n",
+    "print(\"File copied to 'copy_sample.txt'.\")\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 48,
+   "id": "c5472fa3-2d4e-449b-bfb9-133e89d8bfe6",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "This is a very very long line that definitely exceeds fifty characters.\n",
+      "Yet another super long line exceeding the magical 50 characters mark.\n"
+     ]
+    }
+   ],
+   "source": [
+    "# Create a file with long/short lines (demo)\n",
+    "with open(\"long_lines.txt\", \"w\") as f:\n",
+    "    f.write(\"Short line\\n\")\n",
+    "    f.write(\"This is a very very long line that definitely exceeds fifty characters.\\n\")\n",
+    "    f.write(\"Another short one\\n\")\n",
+    "    f.write(\"Yet another super long line exceeding the magical 50 characters mark.\\n\")\n",
+    "\n",
+    "# Print long lines\n",
+    "with open(\"long_lines.txt\", \"r\") as f:\n",
+    "    for line in f:\n",
+    "        if len(line.strip()) > 50:\n",
+    "            print(line.strip())\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 49,
+   "id": "7d5ce4be-b342-4755-a303-885d3bfff1b3",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Lines written to 'lines.txt'\n"
+     ]
+    }
+   ],
+   "source": [
+    "lines = [\"Roses are red\", \"Violets are blue\", \"Python is fun\", \"And so are you\"]\n",
+    "\n",
+    "with open(\"lines.txt\", \"w\") as f:\n",
+    "    for line in lines:\n",
+    "        f.write(line + \"\\n\")\n",
+    "\n",
+    "print(\"Lines written to 'lines.txt'\")\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 50,
+   "id": "4c7b0f56-b5c1-4184-a822-8b7b75043492",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdin",
+     "output_type": "stream",
+     "text": [
+      "Enter numerator:  12\n",
+      "Enter denominator:  2\n"
+     ]
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Result: 6.0\n"
+     ]
+    }
+   ],
+   "source": [
+    "try:\n",
+    "    a = int(input(\"Enter numerator: \"))\n",
+    "    b = int(input(\"Enter denominator: \"))\n",
+    "    result = a / b\n",
+    "    print(\"Result:\", result)\n",
+    "except ZeroDivisionError:\n",
+    "    print(\"Cannot divide by zero!\")\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 52,
+   "id": "b09bd5be-584a-4a10-a73b-36137ae65527",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdin",
+     "output_type": "stream",
+     "text": [
+      "Enter a number:  65\n"
+     ]
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "You entered: 65\n"
+     ]
+    }
+   ],
+   "source": [
+    "try:\n",
+    "    num = int(input(\"Enter a number: \"))\n",
+    "    print(\"You entered:\", num)\n",
+    "except ValueError:\n",
+    "    print(\"Invalid input! Please enter a valid number.\")\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 53,
+   "id": "7ff85406-4a60-4cc0-987b-1a696d78055e",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "File not found! Please check the file name.\n"
+     ]
+    }
+   ],
+   "source": [
+    "try:\n",
+    "    with open(\"nonexistent.txt\", \"r\") as f:\n",
+    "        print(f.read())\n",
+    "except FileNotFoundError:\n",
+    "    print(\"File not found! Please check the file name.\")\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 54,
+   "id": "263ac352-03e9-4fca-ab0b-cfa48746c5e2",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Index out of range!\n"
+     ]
+    }
+   ],
+   "source": [
+    "numbers = [10, 20, 30]\n",
+    "try:\n",
+    "    print(numbers[5])\n",
+    "except IndexError:\n",
+    "    print(\"Index out of range!\")\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 55,
+   "id": "53a02e43-6089-4432-8f22-4bbd2cbc4f40",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Trying something risky...\n",
+      "Caught division by zero!\n",
+      "This will always run no matter what.\n"
+     ]
+    }
+   ],
+   "source": [
+    "try:\n",
+    "    print(\"Trying something risky...\")\n",
+    "    x = 1 / 0\n",
+    "except ZeroDivisionError:\n",
+    "    print(\"Caught division by zero!\")\n",
+    "finally:\n",
+    "    print(\"This will always run no matter what.\")\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "52651824-759c-4c24-baaa-933babf66c2d",
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python [conda env:base] *",
+   "language": "python",
+   "name": "conda-base-py"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.12.7"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 5
+}
